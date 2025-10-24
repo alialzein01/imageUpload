@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PPT Image Tool</title>
+
+    <!-- Office JavaScript API -->
+    <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js" type="text/javascript"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="taskpane.css?v=2" />
+</head>
+
+<body>
+    <div class="ms-welcome">
+        <header class="ms-welcome__header ms-bgColor-neutralLighter ms-u-fadeIn500">
+            <h1 class="ms-fontSize-su ms-fontWeight-light ms-fontColor-neutralPrimary">PPT Image Tool</h1>
+        </header>
+
+        <main id="app-body" class="ms-welcome__main ms-u-fadeIn500">
+            <!-- Login Section -->
+            <div id="login-section" class="login-section">
+                <div class="login-card">
+                    <h2>Login Required</h2>
+                    <form id="login-form" class="login-form">
+                        <div class="form-group">
+                            <label for="username">Username:</label>
+                            <input type="text" id="username" name="username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input type="password" id="password" name="password" required>
+                        </div>
+                        <button type="button" id="btn-login" class="btn-primary">Login</button>
+                        <div id="login-error" class="error-message hidden"></div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Logged In Section -->
+            <div id="logged-in-section" class="logged-in-section hidden">
+                <div class="user-info">
+                    <span id="logged-in-user"></span>
+                    <button id="btn-logout" class="btn-secondary">Logout</button>
+                </div>
+
+                <!-- Tab Navigation -->
+                <div class="tab-container">
+                    <button id="tab-instructor" class="tab-button active">Instructor</button>
+                    <button id="tab-student" class="tab-button">Student</button>
+                    <button id="tab-review" class="tab-button">Review</button>
+                    <button id="tab-powerpoint" class="tab-button">PowerPoint</button>
+                </div>
+
+                <!-- Content Area -->
+                <div id="content" class="content-area">
+                    <!-- Instructor Tab Content -->
+                    <div id="instructor-content" class="tab-content">
+                        <h3>Insert Question</h3>
+                        <form id="form-question" class="question-form">
+                            <div class="form-group">
+                                <label for="select-class">Class:</label>
+                                <select id="select-class" name="class_id" required>
+                                    <option value="">Loading classes...</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="question-text">Question Text:</label>
+                                <textarea id="question-text" name="question_text" rows="4" placeholder="Enter your question here..." required></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="question-image">Optional Image:</label>
+                                <input type="file" id="question-image" name="image" accept="image/*">
+                                <div id="image-preview" class="image-preview hidden">
+                                    <img id="preview-img" src="" alt="Preview">
+                                    <button type="button" id="remove-image" class="btn-remove">Remove Image</button>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" id="btn-submit-question" class="btn-primary">Submit Question</button>
+                            <div id="question-status" class="status-message"></div>
+                        </form>
+
+                        <div class="recent-questions">
+                            <h4>Recent Questions</h4>
+                            <div id="recent-questions" class="questions-list">
+                                <p class="no-questions">No questions yet. Create your first question above!</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Test API Section -->
+                        <div class="test-section">
+                            <button id="test-api" class="test-button">Test API Connection</button>
+                            <div id="api-result" class="api-result"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Student Tab Content -->
+                    <div id="student-content" class="tab-content hidden">
+                        <h3>Student Answer Submission</h3>
+                        
+                        <!-- Student Class Selection -->
+                        <div class="student-class-selection">
+                            <div class="form-group">
+                                <label for="student-class-select">Select Your Class:</label>
+                                <select id="student-class-select" name="student_class_id" required>
+                                    <option value="">Loading classes...</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <!-- Available Questions -->
+                        <div class="available-questions">
+                            <h4>Available Questions</h4>
+                            <div id="available-questions" class="questions-list">
+                                <p class="no-questions">Select a class to view questions.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Answer Submission Form -->
+                        <div id="answer-form-section" class="answer-form-section hidden">
+                            <h4>Submit Your Answer</h4>
+                            <form id="form-answer" class="answer-form">
+                                <div class="question-display">
+                                    <div id="selected-question-text" class="question-text-display"></div>
+                                    <div id="selected-question-image" class="question-image-display"></div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="answer-image">Your Answer (Image Required):</label>
+                                    <input type="file" id="answer-image" name="image" accept="image/*" required>
+                                    <div id="answer-image-preview" class="image-preview hidden">
+                                        <img id="answer-preview-img" src="" alt="Answer Preview">
+                                        <button type="button" id="remove-answer-image" class="btn-remove">Remove Image</button>
+                                    </div>
+                                </div>
+                                
+                                <button type="submit" id="btn-submit-answer" class="btn-primary">Submit Answer</button>
+                                <button type="button" id="btn-cancel-answer" class="btn-secondary">Cancel</button>
+                                <div id="answer-status" class="status-message"></div>
+                            </form>
+                        </div>
+                        
+                        <!-- My Answers -->
+                        <div class="my-answers">
+                            <h4>My Submitted Answers</h4>
+                            <div id="my-answers" class="answers-list">
+                                <p class="no-answers">No answers submitted yet.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Review Tab Content -->
+                    <div id="review-content" class="tab-content hidden">
+                        <h3>Review Student Answers</h3>
+                        
+                        <!-- Review Class Selection -->
+                        <div class="review-class-selection">
+                            <div class="form-group">
+                                <label for="review-class-select">Select Class to Review:</label>
+                                <select id="review-class-select" name="review_class_id" required>
+                                    <option value="">Loading classes...</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <!-- Question Selection for Review -->
+                        <div id="review-question-selection" class="review-question-selection hidden">
+                            <h4>Select Question to Review</h4>
+                            <div id="review-questions" class="questions-list">
+                                <p class="no-questions">Select a class to view questions.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Student Answers Review -->
+                        <div id="review-answers-section" class="review-answers-section hidden">
+                            <div class="review-header">
+                                <h4 id="review-question-title">Question Title</h4>
+                                <div class="review-stats">
+                                    <span id="total-answers" class="stat-item">0 answers</span>
+                                    <span id="liked-answers" class="stat-item">0 liked</span>
+                                </div>
+                            </div>
+                            
+                            <div id="student-answers" class="answers-review-list">
+                                <p class="no-answers">No answers to review yet.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Analytics Dashboard -->
+                        <div class="analytics-dashboard">
+                            <h4>Class Analytics</h4>
+                            <div class="analytics-grid">
+                                <div class="analytics-card">
+                                    <div class="analytics-number" id="total-questions-count">0</div>
+                                    <div class="analytics-label">Total Questions</div>
+                                </div>
+                                <div class="analytics-card">
+                                    <div class="analytics-number" id="total-answers-count">0</div>
+                                    <div class="analytics-label">Total Answers</div>
+                                </div>
+                                <div class="analytics-card">
+                                    <div class="analytics-number" id="liked-answers-count">0</div>
+                                    <div class="analytics-label">Liked Answers</div>
+                                </div>
+                                <div class="analytics-card">
+                                    <div class="analytics-number" id="participation-rate">0%</div>
+                                    <div class="analytics-label">Participation Rate</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- PowerPoint Integration Tab Content -->
+                    <div id="powerpoint-content" class="tab-content hidden">
+                        <h3>PowerPoint Integration</h3>
+                        
+                        <!-- PowerPoint Status -->
+                        <div class="powerpoint-status">
+                            <div class="status-indicator">
+                                <span id="powerpoint-status-icon">🔗</span>
+                                <span id="powerpoint-status-text">Connected to PowerPoint</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Insert Question into Slide -->
+                        <div class="insert-question-section">
+                            <h4>Insert Question into Current Slide</h4>
+                            
+                            <div class="form-group">
+                                <label for="powerpoint-class-select">Select Class:</label>
+                                <select id="powerpoint-class-select" name="powerpoint_class_id" required>
+                                    <option value="">Loading classes...</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="powerpoint-question-select">Select Question:</label>
+                                <select id="powerpoint-question-select" name="powerpoint_question_id" required>
+                                    <option value="">Select a class first</option>
+                                </select>
+                            </div>
+                            
+                            <div class="insert-options">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="include-image" checked>
+                                    <span class="checkmark"></span>
+                                    Include question image
+                                </label>
+                                
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="add-answer-space" checked>
+                                    <span class="checkmark"></span>
+                                    Add space for student answers
+                                </label>
+                            </div>
+                            
+                            <button id="btn-insert-question" class="btn-primary">Insert Question into Slide</button>
+                            <div id="insert-status" class="status-message"></div>
+                        </div>
+                        
+                        <!-- Interactive Features -->
+                        <div class="interactive-features">
+                            <h4>Interactive Features</h4>
+                            
+                            <div class="feature-grid">
+                                <div class="feature-card">
+                                    <div class="feature-icon">📝</div>
+                                    <div class="feature-title">Live Answer Collection</div>
+                                    <div class="feature-description">Students can submit answers directly from the slide</div>
+                                    <button class="btn-feature" id="btn-enable-live-answers">Enable Live Answers</button>
+                                </div>
+                                
+                                <div class="feature-card">
+                                    <div class="feature-icon">📊</div>
+                                    <div class="feature-title">Real-time Analytics</div>
+                                    <div class="feature-description">View answer statistics as they come in</div>
+                                    <button class="btn-feature" id="btn-show-analytics">Show Analytics</button>
+                                </div>
+                                
+                                <div class="feature-card">
+                                    <div class="feature-icon">🎯</div>
+                                    <div class="feature-title">Quick Review</div>
+                                    <div class="feature-description">Review and like answers without leaving PowerPoint</div>
+                                    <button class="btn-feature" id="btn-quick-review">Quick Review</button>
+                                </div>
+                                
+                                <div class="feature-card">
+                                    <div class="feature-icon">🔄</div>
+                                    <div class="feature-title">Auto-refresh</div>
+                                    <div class="feature-description">Automatically update slide with new answers</div>
+                                    <button class="btn-feature" id="btn-toggle-auto-refresh">Enable Auto-refresh</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Current Slide Info -->
+                        <div class="slide-info">
+                            <h4>Current Slide Information</h4>
+                            <div class="slide-details">
+                                <div class="detail-item">
+                                    <span class="detail-label">Slide Number:</span>
+                                    <span id="current-slide-number">-</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Total Slides:</span>
+                                    <span id="total-slides">-</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Presentation Title:</span>
+                                    <span id="presentation-title">-</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Load the taskpane.js file -->
+    <script src="taskpane.js"></script>
+</body>
+</html>

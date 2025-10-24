@@ -1,0 +1,1254 @@
+/* Office Add-in Styles */
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+}
+
+.ms-welcome {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.ms-welcome__header {
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid #e1e5e9;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.ms-welcome__header h1 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 300;
+    color: white;
+}
+
+.ms-welcome__main {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+/* Login Section */
+.login-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+}
+
+.login-card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 320px;
+}
+
+.login-card h2 {
+    margin: 0 0 20px 0;
+    text-align: center;
+    color: #333;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Logged In Section */
+.logged-in-section {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.user-info {
+    background: #e3f2fd;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: #1976d2;
+}
+
+/* Tab Content */
+.tab-content {
+    display: block;
+}
+
+.tab-content.hidden {
+    display: none;
+}
+
+/* Tab Navigation */
+.tab-container {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #e1e5e9;
+    background: white;
+    border-radius: 8px 8px 0 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.tab-button {
+    flex: 1;
+    padding: 12px 16px;
+    border: none;
+    background: white;
+    color: #666;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-bottom: 3px solid transparent;
+}
+
+.tab-button:hover {
+    background: #f8f9fa;
+    color: #333;
+}
+
+.tab-button.active {
+    color: #0078d4;
+    border-bottom-color: #0078d4;
+    background: #f8f9fa;
+}
+
+.tab-button:first-child {
+    border-radius: 8px 0 0 0;
+}
+
+.tab-button:last-child {
+    border-radius: 0 8px 0 0;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: #333;
+    font-size: 14px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #0078d4;
+    box-shadow: 0 0 0 2px rgba(0,120,212,0.2);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.form-group input[type="file"] {
+    padding: 8px;
+    border: 2px dashed #ddd;
+    background: #fafafa;
+    cursor: pointer;
+}
+
+.form-group input[type="file"]:hover {
+    border-color: #0078d4;
+    background: #f0f8ff;
+}
+
+/* Question Form */
+.question-form {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.question-form h3 {
+    margin: 0 0 20px 0;
+    color: #333;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+/* Image Preview */
+.image-preview {
+    margin-top: 12px;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background: #fafafa;
+    text-align: center;
+}
+
+.image-preview img {
+    max-width: 100%;
+    max-height: 200px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.btn-remove {
+    margin-top: 8px;
+    padding: 6px 12px;
+    background: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-remove:hover {
+    background: #c82333;
+}
+
+/* Recent Questions */
+.recent-questions {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.recent-questions h4 {
+    margin: 0 0 16px 0;
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.questions-list {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.question-item {
+    border: 1px solid #e1e5e9;
+    border-radius: 6px;
+    padding: 12px;
+    margin-bottom: 12px;
+    background: #fafafa;
+    transition: box-shadow 0.3s ease;
+}
+
+.question-item:hover {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.question-text {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.question-image {
+    margin: 8px 0;
+}
+
+.question-thumbnail {
+    max-width: 100%;
+    max-height: 100px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.question-meta {
+    font-size: 12px;
+    color: #666;
+    margin-top: 8px;
+}
+
+.question-date {
+    font-style: italic;
+}
+
+.no-questions {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+    padding: 20px;
+    margin: 0;
+}
+
+/* Content Area */
+.content-area {
+    background: transparent;
+    padding: 0;
+    margin-bottom: 20px;
+    min-height: 120px;
+}
+
+.content-area p {
+    margin: 0;
+    color: #333;
+    line-height: 1.5;
+}
+
+/* Button Styles */
+.btn-primary {
+    background: #0078d4;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background: #106ebe;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,120,212,0.3);
+}
+
+.btn-primary:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background: #5a6268;
+}
+
+/* Status Messages */
+.status-message {
+    margin-top: 12px;
+    padding: 10px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.status-message.success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.status-message.error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Error Messages */
+.error-message {
+    background: #f8d7da;
+    color: #721c24;
+    padding: 10px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    margin-top: 8px;
+}
+
+.error-message h4 {
+    margin: 0 0 8px 0;
+    font-size: 14px;
+}
+
+.error-message p {
+    margin: 4px 0;
+    font-size: 12px;
+}
+
+.error-message ul {
+    margin: 8px 0;
+    padding-left: 20px;
+}
+
+.error-message li {
+    margin: 4px 0;
+    font-size: 12px;
+}
+
+/* Success Messages */
+.success-message {
+    background: #d4edda;
+    color: #155724;
+    padding: 12px;
+    border-radius: 6px;
+    margin-top: 10px;
+}
+
+.success-message h4 {
+    margin: 0 0 8px 0;
+    font-size: 14px;
+}
+
+.success-message p {
+    margin: 4px 0;
+    font-size: 12px;
+}
+
+.success-message pre {
+    background: #f8f9fa;
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    overflow-x: auto;
+    margin: 8px 0;
+}
+
+/* Utility Classes */
+.hidden {
+    display: none !important;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mb-0 {
+    margin-bottom: 0;
+}
+
+.mt-10 {
+    margin-top: 10px;
+}
+
+/* Test Section */
+.test-section {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Student Interface Styles */
+.student-class-selection {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.available-questions {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.available-questions h4 {
+    margin: 0 0 16px 0;
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.question-item.clickable {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.question-item.clickable:hover {
+    background: #f0f8ff;
+    border-color: #0078d4;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,120,212,0.2);
+}
+
+.btn-answer {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 8px;
+}
+
+.btn-answer:hover {
+    background: #218838;
+}
+
+.answer-form-section {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.answer-form-section h4 {
+    margin: 0 0 16px 0;
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.question-display {
+    background: #f8f9fa;
+    padding: 16px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    border-left: 4px solid #0078d4;
+}
+
+.question-text-display {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 12px;
+    line-height: 1.4;
+    font-weight: 500;
+}
+
+.question-image-display {
+    text-align: center;
+}
+
+.question-display-image {
+    max-width: 100%;
+    max-height: 200px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.answer-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.answer-form .form-group {
+    margin-bottom: 0;
+}
+
+.answer-form .btn-primary,
+.answer-form .btn-secondary {
+    width: auto;
+    padding: 10px 20px;
+    margin-right: 8px;
+    display: inline-block;
+}
+
+.my-answers {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.my-answers h4 {
+    margin: 0 0 16px 0;
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.answers-list {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.answer-item {
+    border: 1px solid #e1e5e9;
+    border-radius: 6px;
+    padding: 12px;
+    margin-bottom: 12px;
+    background: #fafafa;
+    transition: box-shadow 0.3s ease;
+}
+
+.answer-item:hover {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.answer-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 12px;
+}
+
+.answer-date {
+    color: #666;
+    font-style: italic;
+}
+
+.answer-status {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.answer-status.liked {
+    background: #d4edda;
+    color: #155724;
+}
+
+.answer-status.not-liked {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.answer-image {
+    margin-top: 8px;
+}
+
+.answer-thumbnail {
+    max-width: 100%;
+    max-height: 100px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.no-answers {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+    padding: 20px;
+    margin: 0;
+}
+
+/* Review Interface Styles */
+.review-class-selection {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.review-question-selection {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.review-question-selection h4 {
+    margin: 0 0 16px 0;
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.btn-review {
+    background: #0078d4;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 8px;
+}
+
+.btn-review:hover {
+    background: #106ebe;
+}
+
+.review-answers-section {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid #e1e5e9;
+}
+
+.review-header h4 {
+    margin: 0;
+    color: #333;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.review-stats {
+    display: flex;
+    gap: 16px;
+}
+
+.stat-item {
+    background: #f8f9fa;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #666;
+}
+
+.answers-review-list {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.answer-review-item {
+    border: 1px solid #e1e5e9;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+    background: #fafafa;
+    transition: all 0.3s ease;
+}
+
+.answer-review-item:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transform: translateY(-1px);
+}
+
+.answer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.student-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.student-name {
+    font-weight: 500;
+    color: #333;
+    font-size: 14px;
+}
+
+.answer-date {
+    font-size: 12px;
+    color: #666;
+    font-style: italic;
+}
+
+.answer-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-like {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.btn-like:hover {
+    background: #f8f9fa;
+    border-color: #0078d4;
+}
+
+.btn-like.liked {
+    background: #d4edda;
+    border-color: #28a745;
+    color: #155724;
+}
+
+.btn-like.not-liked {
+    background: #fff;
+    border-color: #ddd;
+    color: #666;
+}
+
+.answer-image-container {
+    text-align: center;
+    margin-top: 12px;
+}
+
+.answer-review-image {
+    max-width: 100%;
+    max-height: 200px;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.answer-review-image:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Analytics Dashboard */
+.analytics-dashboard {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.analytics-dashboard h4 {
+    margin: 0 0 20px 0;
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.analytics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 16px;
+}
+
+.analytics-card {
+    background: #f8f9fa;
+    padding: 16px;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid #e1e5e9;
+    transition: all 0.3s ease;
+}
+
+.analytics-card:hover {
+    background: #e3f2fd;
+    border-color: #0078d4;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,120,212,0.2);
+}
+
+.analytics-number {
+    font-size: 24px;
+    font-weight: bold;
+    color: #0078d4;
+    margin-bottom: 4px;
+}
+
+.analytics-label {
+    font-size: 12px;
+    color: #666;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* PowerPoint Integration Styles */
+.powerpoint-status {
+    background: white;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+}
+
+.insert-question-section {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.insert-question-section h4 {
+    margin: 0 0 16px 0;
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.insert-options {
+    margin: 16px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #333;
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: auto;
+    margin: 0;
+}
+
+.checkmark {
+    width: 16px;
+    height: 16px;
+    border: 2px solid #ddd;
+    border-radius: 3px;
+    display: inline-block;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark {
+    background: #0078d4;
+    border-color: #0078d4;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark::after {
+    content: '✓';
+    position: absolute;
+    top: -2px;
+    left: 2px;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.interactive-features {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.interactive-features h4 {
+    margin: 0 0 20px 0;
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+}
+
+.feature-card {
+    background: #f8f9fa;
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid #e1e5e9;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.feature-card:hover {
+    background: #e3f2fd;
+    border-color: #0078d4;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,120,212,0.2);
+}
+
+.feature-icon {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.feature-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 4px;
+}
+
+.feature-description {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 12px;
+    line-height: 1.4;
+}
+
+.btn-feature {
+    background: #0078d4;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.btn-feature:hover {
+    background: #106ebe;
+    transform: translateY(-1px);
+}
+
+.btn-feature.active {
+    background: #28a745;
+}
+
+.btn-feature.active:hover {
+    background: #218838;
+}
+
+.slide-info {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.slide-info h4 {
+    margin: 0 0 16px 0;
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.slide-details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.detail-item:last-child {
+    border-bottom: none;
+}
+
+.detail-label {
+    font-size: 12px;
+    color: #666;
+    font-weight: 500;
+}
+
+.detail-item span:last-child {
+    font-size: 12px;
+    color: #333;
+    font-weight: 500;
+}
+
+.test-button {
+    width: 100%;
+    padding: 12px 20px;
+    background: #0078d4;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 15px;
+}
+
+.test-button:hover:not(:disabled) {
+    background: #106ebe;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,120,212,0.3);
+}
+
+.test-button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.api-result {
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.success-message {
+    background: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+    padding: 12px;
+    border-radius: 6px;
+    margin-top: 10px;
+}
+
+.success-message h4 {
+    margin: 0 0 8px 0;
+    font-size: 14px;
+}
+
+.success-message p {
+    margin: 4px 0;
+    font-size: 12px;
+}
+
+.success-message pre {
+    background: #f8f9fa;
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    overflow-x: auto;
+    margin: 8px 0;
+}
+
+.error-message {
+    background: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+    padding: 12px;
+    border-radius: 6px;
+    margin-top: 10px;
+}
+
+.error-message h4 {
+    margin: 0 0 8px 0;
+    font-size: 14px;
+}
+
+.error-message p {
+    margin: 4px 0;
+    font-size: 12px;
+}
+
+.error-message ul {
+    margin: 8px 0;
+    padding-left: 20px;
+}
+
+.error-message li {
+    margin: 4px 0;
+    font-size: 12px;
+}
+
+/* Responsive Design */
+@media (max-width: 350px) {
+    .ms-welcome__header h1 {
+        font-size: 20px;
+    }
+    
+    .tab-button {
+        padding: 10px 12px;
+        font-size: 13px;
+    }
+    
+    .content-area, .test-section {
+        padding: 15px;
+    }
+}
+
+/* Loading Animation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #0078d4;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-right: 8px;
+}
+
+/* Utility Classes */
+.text-center {
+    text-align: center;
+}
+
+.mb-0 {
+    margin-bottom: 0;
+}
+
+.mt-10 {
+    margin-top: 10px;
+}
+
+/* Office Theme Colors */
+.ms-bgColor-neutralLighter {
+    background-color: #f8f9fa;
+}
+
+.ms-fontSize-su {
+    font-size: 24px;
+}
+
+.ms-fontWeight-light {
+    font-weight: 300;
+}
+
+.ms-fontColor-neutralPrimary {
+    color: #323130;
+}
+
+.ms-u-fadeIn500 {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

@@ -1,0 +1,39 @@
+{
+  "name": "ppt-image-tool-addin",
+  "version": "1.0.0",
+  "description": "PowerPoint add-in for creating image-based questions and collecting student answers",
+  "main": "dist/taskpane.js",
+  "scripts": {
+    "dev": "webpack serve --mode development",
+    "build": "webpack --mode production",
+    "start": "office-addin-debugging start manifest.xml desktop",
+    "stop": "office-addin-debugging stop manifest.xml"
+  },
+  "dependencies": {
+    "copy-webpack-plugin": "^11.0.0",
+    "html-webpack-plugin": "^5.5.3",
+    "office-addin-debugging": "^5.0.0",
+    "webpack": "^5.88.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^11.0.0",
+    "css-loader": "^7.1.2",
+    "html-webpack-plugin": "^5.5.3",
+    "office-addin-debugging": "^5.0.0",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.88.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
+  },
+  "keywords": [
+    "office",
+    "powerpoint",
+    "add-in",
+    "education",
+    "images"
+  ],
+  "author": "Your Organization",
+  "license": "MIT"
+}
