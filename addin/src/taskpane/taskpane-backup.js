@@ -28,8 +28,8 @@ let autoRefreshInterval = null;
 let currentSlideInfo = {};
 let studentAutoRefreshInterval = null; // Auto-refresh for student answers
 // API Base URL - try different endpoints for desktop vs web
-const API_BASE = 'https://localhost:8000/api'; // Use HTTPS by default
-const API_BASE_HTTP = 'http://localhost:8001/api'; // Fallback for web
+const API_BASE = 'http://localhost:8000/api';
+const API_BASE_HTTPS = 'https://localhost:8000/api'; // Fallback for desktop
 
 // API endpoint selector for desktop vs web compatibility
 async function getApiBase() {
@@ -37,24 +37,20 @@ async function getApiBase() {
     const isDesktop = typeof Office !== 'undefined' && Office.context && Office.context.platform === Office.PlatformType.PC;
     
     if (isDesktop) {
-        console.log('Desktop detected, using HTTPS API');
-        return API_BASE; // Use HTTPS for desktop
-    } else {
-        console.log('Web detected, trying HTTPS first...');
-        // Try HTTPS first for web too
+        console.log('Desktop detected, trying HTTPS first...');
+        // Try HTTPS first for desktop
         try {
-            const response = await fetch(`${API_BASE}/health/`, { method: 'HEAD' });
+            const response = await fetch(`${API_BASE_HTTPS}/health/`, { method: 'HEAD' });
             if (response.ok) {
                 console.log('HTTPS API working, using HTTPS');
-                return API_BASE;
+                return API_BASE_HTTPS;
             }
         } catch (error) {
             console.log('HTTPS API failed, falling back to HTTP:', error.message);
-            return API_BASE_HTTP;
         }
     }
     
-    console.log('Using HTTPS API base as default');
+    console.log('Using HTTP API base');
     return API_BASE;
 }
 
@@ -516,15 +512,6 @@ async function handleLogin(event) {
     console.log('handleLogin called');
     event.preventDefault();
     
-    // Add debugging for network connectivity
-    console.log('Testing network connectivity...');
-    try {
-        const testResponse = await fetch('https://localhost:8000/api/health/');
-        console.log('Network test response:', testResponse.status, testResponse.ok);
-    } catch (error) {
-        console.error('Network test failed:', error);
-    }
-    
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
     console.log('Login attempt for:', username);
@@ -539,8 +526,6 @@ async function handleLogin(event) {
     try {
         const apiBase = await getApiBase();
         console.log('Using API base:', apiBase);
-        console.log('API base type:', typeof apiBase);
-        console.log('API base value:', apiBase);
         
         const response = await fetch(`${apiBase}/auth/login/`, {
             method: 'POST',
@@ -554,7 +539,6 @@ async function handleLogin(event) {
             const data = await response.json();
             authToken = data.access;
             currentUser = username;
-            console.log('Login successful, token received');
             
             // Decode JWT token to get user type
             const tokenData = decodeJWT(authToken);
